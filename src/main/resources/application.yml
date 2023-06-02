@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/study
+    username: studyuser
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    properties:
+      hibernate:
+        format_sql: true #To beautify or pretty print the SQL
+        show_sql: true #show sql
+        connection:
+          characterEncoding: utf8
+          useUnicode: true
+
+  http:
+    encoding:
+      charset=UTF-8:
+
+  springfox:
+    documentation:
+      enabled: true
+    swagger-ui:
+      enabled: true
+    swagger:
+      enabled: true
+
+logging:
+  level:
+    org.hibernate:
+      type.descriptor.sql: trace #show parameter binding
+      SQL: DEBUG
