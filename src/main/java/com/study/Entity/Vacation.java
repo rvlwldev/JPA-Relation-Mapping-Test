@@ -10,9 +10,9 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 @IdClass(VacationKey.class)
+@Table(name = "TestVacation")
 public class Vacation {
 
     @Id
@@ -23,6 +23,11 @@ public class Vacation {
     @ManyToOne
     @JoinColumn(name = "uid")
     private Member member;
+
+    public Vacation(Integer vacationId, Member member){
+        this.vacationId = vacationId;
+        this.member = member;
+    }
 
     @Override
     public boolean equals(Object o) {

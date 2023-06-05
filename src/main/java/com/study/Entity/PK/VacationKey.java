@@ -2,6 +2,7 @@ package com.study.Entity.PK;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.util.Objects;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class VacationKey implements Serializable {
     private int vacationId;
     private int member;
