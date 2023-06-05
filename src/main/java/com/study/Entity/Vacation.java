@@ -10,8 +10,8 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
 @ToString
+@RequiredArgsConstructor
 @IdClass(VacationKey.class)
 public class Vacation {
 
@@ -24,17 +24,17 @@ public class Vacation {
     @JoinColumn(name = "uid")
     private Member member;
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-//        Vacation vacation = (Vacation) o;
-//        return getVacationId() != null && Objects.equals(getVacationId(), vacation.getVacationId())
-//                && getMember() != null && Objects.equals(getMember(), vacation.getMember());
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(vacationId, member);
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Vacation vacation = (Vacation) o;
+        return getVacationId() != null && Objects.equals(getVacationId(), vacation.getVacationId())
+                && getMember() != null && Objects.equals(getMember(), vacation.getMember());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(vacationId, member.getUid());
+    }
 }

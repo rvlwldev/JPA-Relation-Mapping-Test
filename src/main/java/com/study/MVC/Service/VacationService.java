@@ -28,20 +28,12 @@ public class VacationService {
                 .orElseThrow(IllegalAccessException::new);
 
         Vacation vacation = new Vacation();
-        MemberResponse memberResponse = new MemberResponse();
-        VacationResponse response = new VacationResponse();
-
         vacation.setMember(requestedMember);
         vacation.setVacationId(getVacationId(requestedMember));
 
-        memberResponse.setName(requestedMember.getName());
-        memberResponse.setCity(requestedMember.getAddress().getCity());
-        memberResponse.setEmail(requestedMember.getEmail());
+        repo.save(vacation);
 
-        response.setVacationId(vacation.getVacationId());
-        response.setMember(memberResponse);
-
-        return response;
+        return toResponse(requestedMember, vacation);
     }
 
     private int getVacationId(Member requestedMember) {
@@ -51,6 +43,20 @@ public class VacationService {
                 .map(Vacation::getVacationId)
                 .max(Integer::compareTo)
                 .orElse(0) + 1;
+    }
+
+    private VacationResponse toResponse(Member requestedMember, Vacation vacation) {
+        MemberResponse memberResponse = new MemberResponse();
+        VacationResponse response = new VacationResponse();
+
+        memberResponse.setName(requestedMember.getName());
+        memberResponse.setCity(requestedMember.getAddress().getCity());
+        memberResponse.setEmail(requestedMember.getEmail());
+
+        response.setVacationId(vacation.getVacationId());
+        response.setMember(memberResponse);
+
+        return response;
     }
 
 }

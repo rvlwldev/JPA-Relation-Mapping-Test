@@ -1,7 +1,6 @@
 package com.study.MVC.Controller;
 
 import com.study.DTO.VacationResponse;
-import com.study.Entity.Vacation;
 import com.study.MVC.Service.VacationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
