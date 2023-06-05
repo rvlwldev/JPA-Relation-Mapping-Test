@@ -4,7 +4,6 @@ import com.study.Entity.Member;
 import com.study.Entity.PK.VacationKey;
 import com.study.Entity.Vacation;
 import com.study.MVC.Repository.MemberRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +26,9 @@ class StudyProjectApplicationTests {
 
         Member testmember = memberRepo.findAll().get(0);
 
-        Vacation vacation1 = new Vacation();
-        vacation1.setVacationId(1);
-        vacation1.setMember(testmember); // Assume Member object with ID 1
+        Vacation vacation1 = new Vacation(1,testmember);
 
-        Vacation vacation2 = new Vacation();
-        vacation2.setVacationId(1);
-        vacation2.setMember(testmember); // Assume Member object with ID 1
+        Vacation vacation2 = new Vacation(1, testmember);
 
         assertThat(key1.equals(key2)).isTrue();
         assertThat(vacation1.equals(vacation2)).isTrue();
